@@ -1,0 +1,236 @@
+<!DOCTYPE html>  
+<html lang = "en">  
+ <!-- Practical 2-->
+  <!-- add validation using javascript-->
+<head>  
+<title> JavaScript Calculator </title>  
+<style>
+body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+    color: white;
+    font-size: 1.8em;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.formstyle {
+    width: 340px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+input[type="text"] {
+    width: 100%;
+    height: 70px;
+    font-size: 28px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-align: right;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+input[type="button"] {
+    border: none;
+    padding: 18px;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-weight: 500;
+}
+
+input[type="button"]:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+input[type="button"]:active {
+    transform: translateY(0);
+    scale: 0.98;
+}
+
+input[value="/"],
+input[value="*"],
+input[value="-"],
+input[value="+"] {
+    background: rgba(255, 107, 107, 0.3);
+    color: #ff6b6b;
+}
+
+input[value="="] {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+    color: white;
+    grid-column: span 2;
+}
+
+input[value="Clear All"] {
+    background: rgba(255, 107, 107, 0.3);
+    color: #ff6b6b;
+    grid-column: span 4;
+    margin-top: 10px;
+}
+
+input[value="sin"],
+input[value="cos"],
+input[value="tan"],
+input[value="tanh"],
+input[value="sqrt"] {
+    background: rgba(76, 175, 80, 0.3);
+    color: #4CAF50;
+    font-size: 16px;
+}
+
+@media (max-width: 480px) {
+    .formstyle {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    input[type="button"] {
+        padding: 15px;
+        font-size: 18px;
+    }
+    
+    input[type="text"] {
+        height: 60px;
+        font-size: 24px;
+    }
+}
+
+/* Additional Effects */
+input[type="button"].number {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+input[type="button"].operator {
+    background: rgba(255, 107, 107, 0.2);
+}
+
+.glow {
+    animation: glow 0.5s ease-out;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(255, 107, 107, 0.3); }
+    100% { box-shadow: 0 0 20px rgba(255, 107, 107, 0.5); }
+}
+</style>
+</head> 
+<body>
+    <script>
+        function calculateSin() {
+            var angle = document.getElementById("calc").value;
+            var result = Math.sin(angle);
+            document.getElementById("calc").value = result;
+        }
+        function calculateCos() {
+            var value = document.getElementById("calc").value;
+            var result = Math.cos(value);
+            document.getElementById("calc").value = result;
+        }
+        function sqrt(){
+            var value = document.getElementById("calc").value;
+            var result = Math.sqrt(value);
+            document.getElementById("calc").value = result;
+        }
+        function calculateTan(){
+            var value = document.getElementById("calc").value;
+            var result = Math.tan(value);
+            document.getElementById("calc").value = result;
+        }
+        function calculateTanh(){
+            var value = document.getElementById("calc").value;
+            var result = Math.tanh(value);
+            document.getElementById("calc").value = result;
+        }
+    </script>
+<h1> Calculator Program in JavaScript </h1>  
+<div class= "formstyle">  
+    <form name = "form1">  
+        
+    <!-- This input box shows the button pressed by the user in calculator. -->  
+    <input id = "calc" type ="text" name = "answer"> <br> <br> 
+    
+    <!-- Display the calculator button on the screen. -->  
+    <!-- onclick() function display the number prsses by the user. -->  
+    <input type = "button" value =  "1" onclick = "form1.answer.value += '1' ">  
+    <input type = "button" value =  "2" onclick = "form1.answer.value += '2' ">  
+    <input type = "button" value =  "3" onclick = "form1.answer.value += '3' ">  
+    <input type = "button" value = "+" onclick = "form1.answer.value += '+' ">  
+    <br> <br>  
+        
+    <input type = "button" value = "4" onclick = "form1.answer.value += '4' ">  
+    <input type = "button" value = "5" onclick = "form1.answer.value += '5' ">  
+    <input type = "button" value = "6" onclick = "form1.answer.value += '6' ">  
+    <input type = "button" value = "-" onclick = "form1.answer.value += '-' ">  
+    <br> <br>  
+
+        
+    <input type = "button" value = "7" onclick = "form1.answer.value += '7' ">  
+    <input type = "button" value = "8" onclick = "form1.answer.value += '8' ">  
+    <input type = "button" value = "9" onclick = "form1.answer.value += '9' ">  
+    <input type = "button" value = "*" onclick = "form1.answer.value += '*' ">  
+    <br> <br>  
+        
+        
+    <input type = "button" value = "/" onclick = "form1.answer.value += '/' ">  
+    <input type = "button" value = "0" onclick = "form1.answer.value += '0' ">  
+        <input type = "button" value = "." onclick = "form1.answer.value += '.' ">  
+        <!-- When we click on the '=' button, the onclick() shows the sum results on the calculator screen. -->  
+    <input type = "button" value = "=" onclick = "form1.answer.value = eval(form1.answer.value) ">  
+    <br> <br>
+    <input type="button" value= "sin" onclick="calculateSin()" id="angle">
+    <input type="button" value= "cos" onclick="calculateCos()" id="angle">
+    <input type="button" value= "sqrt" onclick="sqrt()" id="angle">
+    <input type="button" value= "tan" onclick="calculateTan()" id="angle"><br><br> 
+    <input type="button" value= "tanh" onclick="calculateTanh()" id="angle"> <br><br>
+
+
+    
+    <!-- Display the Cancel button and erase all data entered by the user. -->  
+    <input type = "button" value = "Clear All" onclick = "form1.answer.value = ' ' " id= "clear" class="last" >  
+    <br>   
+        
+    </form>  
+</div>  
+</body>  
+</html>  
